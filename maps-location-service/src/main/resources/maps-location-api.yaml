@@ -1,0 +1,60 @@
+openapi: "3.0.0"
+info:
+  description: "Maps Location API"
+  version: "0.0.1"
+  title: "Maps Location Service"
+tags:
+  - name: "user"
+    description: "User tag"
+servers:
+  - url: http://localhost:8081/
+    description: "local host"
+
+paths:
+  /maps/get/image:
+    get:
+      tags:
+        - "map location"
+      summary: "Get map for given location"
+      operationId: "getMapLocation"
+      requestBody:
+        description: "Map location data"
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '../../../../maps-location-service/src/main/resources/maps-location-models.yaml#/components/schemas/MapsLocationData'
+      responses:
+        200:
+          description: "Location Image"
+          content:
+            application/json:
+              schema:
+                type: "string"
+                format: "byte"
+  /maps/get/image/list:
+    get:
+      tags:
+        - "map location list"
+      summary: "Get list of maps locations"
+      operationId: "getMapLocationList"
+      requestBody:
+        description: "Map location data list"
+        required: true
+        content:
+          application/json:
+            schema:
+              type: "array"
+              items:
+                $ref: '../../../../maps-location-service/src/main/resources/maps-location-models.yaml#/components/schemas/MapsLocationData'
+      responses:
+        200:
+          description: "Location Image List"
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  type: "string"
+                  format: "byte"
+

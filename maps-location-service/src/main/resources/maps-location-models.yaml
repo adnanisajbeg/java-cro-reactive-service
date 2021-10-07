@@ -1,0 +1,33 @@
+openapi: "3.0.0"
+info:
+  description: "Maps Location Models"
+  version: "0.0.1"
+  title: "Maps Location Models"
+tags:
+  - name: "Maps Location Models"
+    description: "Maps Location Models"
+
+paths: {}
+
+components:
+  schemas:
+    MapsLocationData:
+      type: "object"
+      properties:
+        country:
+          type: "string"
+          example: "britain"
+        city:
+          type: "string"
+          example: "London"
+        address:
+          type: "string"
+          example: "downing street"
+        addressNumber:
+          type: "string"
+          example: "10a"
+        imageWidth:
+          type: "integer"
+          example: "400"
+          default: 400
+

@@ -1,0 +1,7 @@
+server:
+  port: 8091
+
+maps:
+  location:
+    retry: 5
+    backoff-seconds: 1
