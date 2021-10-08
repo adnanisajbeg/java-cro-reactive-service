@@ -9,8 +9,14 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>maps-location-service</artifactId>
+    <artifactId>s3-file-data-service</artifactId>
     <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <aws.version>2.17.53</aws.version>
+    </properties>
 
     <dependencies>
         <dependency>
@@ -34,6 +40,22 @@
             <groupId>javax.validation</groupId>
             <artifactId>validation-api</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>software.amazon.awssdk</groupId>
+            <artifactId>s3</artifactId>
+            <version>${aws.version}</version>
+        </dependency>
+        <dependency>
+            <artifactId>netty-nio-client</artifactId>
+            <groupId>software.amazon.awssdk</groupId>
+            <version>${aws.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>software.amazon.awssdk</groupId>
+            <artifactId>sqs</artifactId>
+            <version>${aws.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -47,37 +69,18 @@
                 <artifactId>openapi-generator-maven-plugin</artifactId>
                 <executions>
                     <execution>
-                        <id>maps-location-api</id>
+                        <id>file-data-models</id>
                         <goals>
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <inputSpec>${project.basedir}/src/main/resources/maps-location-api.yaml</inputSpec>
+                            <inputSpec>${project.basedir}/src/main/resources/file-data-models.yaml</inputSpec>
                             <generatorName>spring</generatorName>
                             <configOptions>
                                 <dateLibrary>java8</dateLibrary>
                                 <reactive>true</reactive>
                                 <interfaceOnly>true</interfaceOnly>
-                                <apiPackage>is.symphony.test.javacro.maps.location.generated.api</apiPackage>
-                                <modelPackage>is.symphony.test.javacro.maps.location.generated.api.model</modelPackage>
-                                <useTags>true</useTags>
-                                <hideGenerationTimestamp>true</hideGenerationTimestamp>
-                            </configOptions>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>maps-location-models</id>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                        <configuration>
-                            <inputSpec>${project.basedir}/src/main/resources/maps-location-models.yaml</inputSpec>
-                            <generatorName>spring</generatorName>
-                            <configOptions>
-                                <dateLibrary>java8</dateLibrary>
-                                <reactive>true</reactive>
-                                <interfaceOnly>true</interfaceOnly>
-                                <modelPackage>is.symphony.test.javacro.maps.location.generated.api.model</modelPackage>
+                                <modelPackage>is.symphony.test.javacro.s3.generated.api.model</modelPackage>
                                 <useTags>true</useTags>
                                 <hideGenerationTimestamp>true</hideGenerationTimestamp>
                             </configOptions>

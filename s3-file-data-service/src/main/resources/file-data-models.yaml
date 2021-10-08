@@ -1,0 +1,78 @@
+openapi: "3.0.0"
+info:
+  description: "SQS Notification Models"
+  version: "0.0.1"
+  title: "SQS Notification Models"
+
+paths: {}
+components:
+  schemas:
+    QueueMessage:
+      type: object
+      properties:
+        Records:
+          type: array
+          items:
+            $ref: "#/components/schemas/QueueBody"
+    QueueBody:
+      type: object
+      properties:
+        awsRegion:
+          type: string
+          example: "eu-central-1"
+        eventTime:
+          type: string
+          example: "2021-10-07T22:55:31.109Z"
+        eventName:
+          type: string
+          example: "ObjectCreated:Put"
+        s3:
+          $ref: "#/components/schemas/S3Data"
+    S3Data:
+      type: object
+      properties:
+        configurationId:
+          type: string
+        object:
+          $ref: "#/components/schemas/FileObject"
+    FileObject:
+      type: object
+      properties:
+        key:
+          type: string
+          example: "MOCK_DATA_1.json"
+        size:
+          type: integer
+          format: "int64"
+          example: "123333"
+    Company:
+      type: object
+      properties:
+        id:
+          type: string
+          format: "uuid"
+          example: "038547b7-e70d-4723-a560-34f4d090dde6"
+        company:
+          type: string
+          example: "Willms, Casper and Weber"
+        address:
+          type: string
+          example: "Weeping Birch Plaza"
+        email:
+          type: string
+          example: "iscroxtonk@usnews.com"
+        sector:
+          type: string
+          example: "Finance"
+        postalCode:
+          type: string
+          example: "623718"
+        country:
+          type: string
+          example: "Russia"
+        city:
+          type: string
+          example: "Staropyshminsk"
+        streetNumber:
+          type: string
+          example: "344"
