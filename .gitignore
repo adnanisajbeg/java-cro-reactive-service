@@ -32,3 +32,6 @@ hs_err_pid*
 *.mvn/*
 !*.mvn/wrapper*
 target
+
+# Others
+out/

@@ -1,0 +1,11 @@
+server:
+  port: 8090
+
+spring:
+  data:
+    cassandra:
+      local-datacenter: datacenter1
+      keyspace-name: companies
+      port: 9042
+      contact-points: localhost
+      schema-action: create_if_not_exists

@@ -1,0 +1,3 @@
+# Initializers
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+    is.symphony.test.javacro.company.data.config.CassandraConfiguration

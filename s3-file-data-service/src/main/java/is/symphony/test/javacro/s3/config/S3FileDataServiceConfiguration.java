@@ -1,8 +1,11 @@
 package is.symphony.test.javacro.s3.config;
 
 import is.symphony.test.javacro.s3.properties.S3FileDataServiceProperties;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.web.reactive.function.client.WebClient;
 import software.amazon.awssdk.auth.credentials.*;
 import software.amazon.awssdk.http.async.SdkAsyncHttpClient;
@@ -15,15 +18,28 @@ import software.amazon.awssdk.services.sqs.SqsAsyncClient;
 import software.amazon.awssdk.services.sqs.SqsAsyncClientBuilder;
 import software.amazon.awssdk.utils.StringUtils;
 
-import java.net.URI;
 import java.time.Duration;
 
 @Configuration
 public class S3FileDataServiceConfiguration {
     private final S3FileDataServiceProperties s3FileDataServiceProperties;
+    private final WebClient.Builder webClientBuilder;
 
-    public S3FileDataServiceConfiguration(final S3FileDataServiceProperties s3FileDataServiceProperties) {
+    @Value("${company.data.url}")
+    private String companyDataURL;
+
+    public S3FileDataServiceConfiguration(final S3FileDataServiceProperties s3FileDataServiceProperties,
+                                          final WebClient.Builder webClientBuilder) {
         this.s3FileDataServiceProperties = s3FileDataServiceProperties;
+        this.webClientBuilder = webClientBuilder;
+    }
+
+    @Bean
+    public WebClient webClient() {
+        return webClientBuilder
+                .baseUrl(companyDataURL)
+                .defaultHeaders(headers -> headers.add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE))
+                .build();
     }
 
     @Bean

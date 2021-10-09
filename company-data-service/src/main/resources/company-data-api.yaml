@@ -1,0 +1,38 @@
+openapi: "3.0.0"
+info:
+  description: "Company Data API"
+  version: "0.0.1"
+  title: "Company Data Service"
+tags:
+  - name: "company data"
+    description: "Company Data tag"
+servers:
+  - url: http://localhost:8090/
+    description: "local host"
+
+paths:
+  /company/all:
+    get:
+      tags:
+        - "companyDataList"
+      summary: "Get all companies data"
+      operationId: "getAllCompaniesData"
+      responses:
+        200:
+          description: "List of Companies Data"
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: '#/components/schemas/Company'
+components:
+  schemas:
+    Company:
+      allOf:
+        - $ref: '../../../../s3-file-data-service/src/main/resources/file-data-models.yaml#/components/schemas/Company'
+        - type: object
+          properties:
+            map:
+              type: string
+              format: byte

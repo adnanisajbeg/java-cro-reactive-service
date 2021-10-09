@@ -1,13 +1,10 @@
 package is.symphony.test.javacro.maps.location.controller;
 
 import io.swagger.annotations.ApiParam;
-import is.symphony.test.javacro.maps.location.generated.api.ApiUtil;
 import is.symphony.test.javacro.maps.location.generated.api.MapLocationApi;
 import is.symphony.test.javacro.maps.location.generated.api.MapLocationListApi;
 import is.symphony.test.javacro.maps.location.generated.api.model.MapsLocationData;
 import is.symphony.test.javacro.maps.location.service.MapsLocationService;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
