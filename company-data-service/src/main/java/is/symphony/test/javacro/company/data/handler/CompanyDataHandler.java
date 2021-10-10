@@ -35,7 +35,7 @@ public class CompanyDataHandler {
     public Mono<ServerResponse> saveAll(final ServerRequest request) {
         return ServerResponse
                 .ok()
-                .contentType(APPLICATION_JSON)
+                .contentType(APPLICATION_NDJSON)
                 .body(companyDataListService.saveAll(request.bodyToFlux(Company.class)), Void.class);
     }
 }
