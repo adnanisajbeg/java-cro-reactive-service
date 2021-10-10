@@ -32,6 +32,8 @@ public class S3PullService {
         getAllFileNamesFromBucket().log().subscribe();
     }
 
+    
+
     public Flux<ByteBuffer> getFileForAsset(final String key) {
 
         return Mono.fromFuture(
@@ -43,6 +45,9 @@ public class S3PullService {
                                         new FluxResponseProvider()))
                 .flatMapMany(FluxResponse::getFlux);
     }
+
+
+
 
     public Flux<S3Object> getAllFileNamesFromBucket() {
         return Mono.fromFuture(s3AsyncClient

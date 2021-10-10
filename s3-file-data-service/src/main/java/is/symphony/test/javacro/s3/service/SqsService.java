@@ -91,12 +91,10 @@ public class SqsService {
         }
 
         return Mono.just(queueMessage.getRecords())
+                // get file name
                 .flatMapMany(Flux::fromIterable)
                 .map(e -> e.getS3().getObject().getKey())
-         /**       .map(e -> {
-                    LOGGER.info("Part size: {}", e.length());
-                    return e;
-                }) */
+                // get file
                 .flatMap(s3PullService::getFileForAsset)
                 .map(e -> new String(e.array(), StandardCharsets.UTF_8))
                 .collectList()

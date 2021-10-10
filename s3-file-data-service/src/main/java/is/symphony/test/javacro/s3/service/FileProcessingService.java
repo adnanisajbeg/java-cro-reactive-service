@@ -35,7 +35,11 @@ public class FileProcessingService {
     private Mono<Void> sendCompany(Flux<Company> companies) {
         LOGGER.info("sending companies...");
 
-        return webClient.post().body(companies, Company.class).retrieve().bodyToMono(Void.class);
+        return webClient
+                .post()
+                .body(companies, Company.class)
+                .retrieve()
+                .bodyToMono(Void.class);
 
     }
 }

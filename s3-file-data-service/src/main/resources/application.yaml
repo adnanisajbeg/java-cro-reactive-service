@@ -1,2 +1,6 @@
 server:
   port: 8092
+
+company:
+  data:
+    url: http://localhost:8090/company/data/list
