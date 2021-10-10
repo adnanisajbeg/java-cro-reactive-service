@@ -72,7 +72,7 @@ public class SqsService {
                 .log()
                 .subscribe(tuple2 -> {
                     LOGGER.info("message: {} ", tuple2.getT1());
-/**
+
                     sqsAsyncClient.deleteMessage(DeleteMessageRequest
                                     .builder()
                                     .queueUrl(s3FileDataServiceProperties.getQueueUrl())
@@ -80,7 +80,7 @@ public class SqsService {
                                     .build())
                             .thenAccept(deleteMessageResponse -> {
                                 LOGGER.info("deleted message with handle {}", tuple2.getT2().receiptHandle());
-                            }); */
+                            });
                 });
     }
 

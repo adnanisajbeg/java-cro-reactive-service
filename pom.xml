@@ -8,6 +8,7 @@
         <module>maps-location-service</module>
         <module>s3-file-data-service</module>
         <module>company-data-service</module>
+        <module>stats-emitter-service</module>
     </modules>
 
     <parent>
