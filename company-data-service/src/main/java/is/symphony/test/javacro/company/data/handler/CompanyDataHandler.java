@@ -11,7 +11,10 @@ import reactor.core.publisher.Mono;
 
 import javax.inject.Named;
 
+import java.time.Duration;
+
 import static org.springframework.http.MediaType.APPLICATION_JSON;
+import static org.springframework.http.MediaType.APPLICATION_STREAM_JSON;
 
 @Named
 public class CompanyDataHandler {
@@ -26,7 +29,7 @@ public class CompanyDataHandler {
     public Mono<ServerResponse> getAll(final ServerRequest request) {
         return ServerResponse
                 .ok()
-                .contentType(APPLICATION_JSON)
+                .contentType(APPLICATION_STREAM_JSON)
                 .body(companyDataListService.getAllCompanies(), Company.class);
     }
 

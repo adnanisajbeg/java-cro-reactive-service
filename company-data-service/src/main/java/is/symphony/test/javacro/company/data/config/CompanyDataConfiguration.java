@@ -10,7 +10,7 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 import javax.inject.Inject;
 
 import static is.symphony.test.javacro.company.data.config.CompanyDataConstants.COMPANY_DATA_LIST_PATH;
-import static org.springframework.http.MediaType.APPLICATION_JSON;
+import static org.springframework.http.MediaType.*;
 import static org.springframework.web.reactive.function.server.RequestPredicates.*;
 import static org.springframework.web.reactive.function.server.RouterFunctions.route;
 
@@ -26,7 +26,7 @@ public class CompanyDataConfiguration {
 
     @Bean
     public RouterFunction<ServerResponse> companyDataRouter() {
-        return route(GET(COMPANY_DATA_LIST_PATH).and(accept(APPLICATION_JSON)), companyDataHandler::getAll)
+        return route(GET(COMPANY_DATA_LIST_PATH).and(accept(APPLICATION_STREAM_JSON)), companyDataHandler::getAll)
                 .and(route(POST(COMPANY_DATA_LIST_PATH).and(accept(APPLICATION_JSON)), companyDataHandler::saveAll));
     }
 }
