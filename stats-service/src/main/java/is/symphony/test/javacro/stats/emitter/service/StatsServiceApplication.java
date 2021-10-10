@@ -6,8 +6,8 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 
 @SpringBootApplication
 @EnableConfigurationProperties
-public class StatsEmitterServiceApplication {
+public class StatsServiceApplication {
     public static void main(String[] args) {
-        SpringApplication.run(StatsEmitterServiceApplication.class, args);
+        SpringApplication.run(StatsServiceApplication.class, args);
     }
 }
