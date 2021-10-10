@@ -38,7 +38,7 @@ public class S3FileDataServiceConfiguration {
     public WebClient webClient() {
         return webClientBuilder
                 .baseUrl(companyDataURL)
-                .defaultHeaders(headers -> headers.add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE))
+                .defaultHeaders(headers -> headers.add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_NDJSON_VALUE))
                 .build();
     }
 

@@ -21,14 +21,14 @@ paths:
         description: "Map location data"
         required: true
         content:
-          application/json:
+          application/x-ndjson:
             schema:
               $ref: '../../../../maps-location-service/src/main/resources/maps-location-models.yaml#/components/schemas/MapsLocationData'
       responses:
         200:
           description: "Location Image"
           content:
-            application/json:
+            application/x-ndjson:
               schema:
                 type: "string"
                 format: "byte"
@@ -42,7 +42,7 @@ paths:
         description: "Map location data list"
         required: true
         content:
-          application/json:
+          application/x-ndjson:
             schema:
               type: "array"
               items:
@@ -51,7 +51,7 @@ paths:
         200:
           description: "Location Image List"
           content:
-            application/json:
+            application/x-ndjson:
               schema:
                 type: "array"
                 items:

@@ -21,7 +21,7 @@ paths:
         200:
           description: "List of Companies Data"
           content:
-            application/json:
+            application/x-ndjson:
               schema:
                 type: "array"
                 items:

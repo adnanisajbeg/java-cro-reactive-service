@@ -26,7 +26,7 @@ public class CompanyDataConfiguration {
 
     @Bean
     public RouterFunction<ServerResponse> companyDataRouter() {
-        return route(GET(COMPANY_DATA_LIST_PATH).and(accept(APPLICATION_STREAM_JSON)), companyDataHandler::getAll)
-                .and(route(POST(COMPANY_DATA_LIST_PATH).and(accept(APPLICATION_JSON)), companyDataHandler::saveAll));
+        return route(GET(COMPANY_DATA_LIST_PATH).and(accept(APPLICATION_NDJSON)), companyDataHandler::getAll)
+                .and(route(POST(COMPANY_DATA_LIST_PATH).and(accept(APPLICATION_NDJSON)), companyDataHandler::saveAll));
     }
 }
