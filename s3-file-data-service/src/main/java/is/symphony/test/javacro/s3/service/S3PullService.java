@@ -43,11 +43,9 @@ public class S3PullService {
                                                 .key(key)
                                                 .build(),
                                         new FluxResponseProvider()))
+                .switchIfEmpty(Mono.error(new RuntimeException("Failed to get data from S3 bucket!")))
                 .flatMapMany(FluxResponse::getFlux);
     }
-
-
-
 
     public Flux<S3Object> getAllFileNamesFromBucket() {
         return Mono.fromFuture(s3AsyncClient
@@ -56,6 +54,7 @@ public class S3PullService {
                                 .bucket(s3FileDataServiceProperties.getBucket())
                                 .build()))
                 .map(ListObjectsResponse::contents)
+                .doOnError(e -> Mono.error(new RuntimeException("Better error message")))
                 .flatMapIterable(list -> list);
     }
 

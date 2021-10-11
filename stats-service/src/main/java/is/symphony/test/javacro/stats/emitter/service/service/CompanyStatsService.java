@@ -2,7 +2,6 @@ package is.symphony.test.javacro.stats.emitter.service.service;
 
 import is.symphony.test.javacro.stats.emitter.service.repository.CompanyRepository;
 import org.springframework.stereotype.Service;
-import reactor.core.publisher.ConnectableFlux;
 import reactor.core.publisher.Flux;
 
 import java.time.Duration;
